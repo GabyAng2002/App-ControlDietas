@@ -1,0 +1,7 @@
+{
+  "name": "ControlCocina",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

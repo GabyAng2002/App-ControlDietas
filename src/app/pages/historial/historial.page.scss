@@ -1,0 +1,233 @@
+.mobile-only ion-segment-button {
+    color: #000000; /* Color para el texto y los íconos */
+}
+
+ion-footer, ion-buttons.desktop-only {
+    display: none; /* Ocultar por defecto */
+}
+
+ion-icon {
+  font-size: 24px;
+  color:#bb0000;
+}
+
+ion-item {
+    --border-color: #ccc;
+    --border-width: 1px;
+    --padding-start: 8px;
+  }
+  
+  ion-label h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .fecha {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  ion-avatar {
+    --size: 40px;
+    margin-right: 10px;
+  }
+  
+  ion-avatar ion-icon {
+    font-size: 24px;
+  }
+  
+  ion-list {
+    margin-top: 10px;
+  }
+  
+.custom-modal {
+    position: fixed; /* Posicionamiento fijo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ancho del modal ocupa toda la pantalla */
+    height: 100%; /* Altura del modal ocupa toda la pantalla */
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro transparente */
+    z-index: 9999; /* Por encima del contenido */
+}
+
+.modal-content {
+    position: absolute; /* Posicionamiento absoluto dentro del modal */
+    bottom: 75px; /* 10px desde el fondo */
+    right: 20px; /* 10px desde la derecha */
+    width: 250px;
+    border-radius: 5px; /* Bordes redondeados para el contenido */
+    background: rgb(0, 0, 0); /* Fondo oscuro para el contenido */
+    padding: 5px; /* Espaciado interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra del contenido */
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center; /* Centramos por defecto para móviles */
+    margin: 2% 5%; /* Margen 2% arriba y abajo, 5% a los lados */
+}
+
+full-calendar {
+    max-width: 800px;
+    background-color: #FFFFFF; /* Fondo gris oscuro */
+    border: 2px solid black; /* Borde negro de 2px */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espacio interior */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%; /* Aseguramos que el calendario use todo el espacio disponible */
+}
+
+/* Para dispositivos con un ancho mayor a 768px (desktop) */
+@media screen and (min-width: 769px) {
+    .calendar-container {
+        justify-content: flex-start; /* Alinear el calendario a la izquierda en desktop */
+    }
+    
+    .content-wrapper {
+        display: flex;
+        justify-content: space-between; /* El contenido adicional se acomoda a la derecha */
+    }
+
+    .content-wrapper .calendar-container {
+        flex: 1;
+    }
+
+    .content-wrapper .additional-content {
+        flex: 1;
+        margin-left: 20px; /* Espacio entre el calendario y el contenido adicional */
+    }
+
+    ion-footer.mobile-only {
+        display: none; /* Ocultar el navbar inferior en desktop */
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    ion-buttons.desktop-only {
+        display: flex; /* Mostrar los botones del header en desktop */
+    }
+}
+
+/* Para dispositivos con un ancho menor a 768px (móviles) */
+@media screen and (max-width: 768px) {
+    .calendar-container {
+        justify-content: center; /* Centramos el calendario en móviles */
+    }
+
+    .additional-content {
+        margin-top: 20px; /* El contenido adicional se coloca debajo del calendario en móviles */
+    }
+
+    ion-footer.mobile-only {
+        display: block; /* Mostrar el navbar inferior en móviles */
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    ion-buttons.desktop-only {
+        display: none; /* Ocultar los botones del header en móviles */
+    }
+}
+
+/*ESTILOS CALENDAR*/
+:host ::ng-deep .fc-day {
+    border-color: #fff !important;
+}
+
+:host ::ng-deep .fc-daygrid-day-number{
+ // border-color: #000 !important; /* Cambia el color de los bordes */
+  color: #000; 
+}
+:host ::ng-deep .fc-col-header-cell-cushion{
+  color: #0F5B95;
+ }
+
+:host ::ng-deep .fc-day.fc-day-today .fc-daygrid-day-number { /* ESTILO PARA EL DIA ACTUAL */
+  background-color: #bb0000 !important;
+  font-weight: bold !important;
+  font-style: initial !important;
+  font-size: 18px !important;
+  color: #fff !important;
+  padding: 8px;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  vertical-align: middle;
+  border-radius: 20px;
+}
+:host ::ng-deep .fc-toolbar-title{
+ color: #114E7B;
+}
+:host ::ng-deep .fc-event-time{
+  display: none;
+ }
+
+/* Estilos para las cards de home*/
+ion-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.responsive-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
+  height: 100%; 
+  background: #f6f6f6;
+  transition: background-color 0.3s ease;
+}
+
+/* Cambia el color al pasar el mouse por encima */
+.responsive-card:hover {
+    background: #e0e0e0; /* Color de fondo cuando el mouse está encima */
+  }
+  
+/* Cambia el color cuando se hace clic */
+.responsive-card:active {
+    background: #d1d1d1; /* Color de fondo al hacer clic */
+  }
+
+  .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 1%;
+  }
+
+.card-content img {
+    width: 90%; /* Controla el tamaño de la imagen según el contenedor */
+    max-width: 100%; /* Tamaño máximo de la imagen */
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+.icon-card{
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+.btn-danger{
+  background-color: red;
+}
+
+.main-space {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  height: 100%; 
+}

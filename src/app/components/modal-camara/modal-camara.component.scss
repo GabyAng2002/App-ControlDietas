@@ -1,0 +1,89 @@
+ion-header {
+  /* Estilos para el ion-toolbar dentro del encabezado */
+  ion-toolbar {
+      height: 80px; /* Ajusta la altura del toolbar */
+      --background: #f5f5f5; /* Color de fondo del toolbar */
+      color: black; /* Color del texto dentro del toolbar */
+      position: relative; /* Permite posicionar elementos hijos, como el logo */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra en la parte inferior del header */
+
+      /* Estilos para el título dentro del toolbar */
+      ion-title {
+          font-size: 30px !important; /* Ajusta el tamaño del texto del título */
+          font-weight: bold; /* Hace el texto en negrita */
+          margin: 15px 15px; /* Margen alrededor del título */
+      }
+
+      /* Estilos para el logo que se posiciona en la esquina derecha */
+      .close {
+        width: 100px; /* Ancho del logo */
+        height: auto; /* Altura del logo */
+        position: absolute; /* Posiciona el logo en relación al toolbar */
+        right: 10px; /* Espaciado desde la derecha */
+        top: 50%; /* Posiciona el logo verticalmente centrado */
+        transform: translateY(-50%); /* Ajusta el logo para que esté centrado verticalmente */
+    }
+
+      /* Estilos para los botones dentro del toolbar */
+      ion-button {
+          font-size: 17px; /* Ajusta el tamaño del texto de los botones */
+      }
+  }
+}
+
+ion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  ion-button {
+    width: 60%; /* Botón ajustado al 80% del ancho del contenedor */
+    margin-bottom: 1rem;
+  }
+  
+  .camara {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ocupa toda la altura de ion-content */
+  }
+
+  .loading ion-spinner {
+    color: black; /* Cambia el color del spinner */
+  }
+  
+  .loading p {
+    color: black; /* Cambia el color del texto */
+  }  
+
+  .video-container, .image-preview {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Contenedor de video o imagen ajustado al 80% del ancho */
+    max-height: 80%; /* Limitar la altura al 80% de la pantalla */
+    margin-top: 1rem;
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .image-preview img {
+    width: 80%; /* Ajustar la imagen al ancho del contenedor */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }

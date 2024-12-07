@@ -1,0 +1,92 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Estilos para el encabezado de la aplicación NIVEL ROOT */
+ion-header {
+    /* Estilos para el ion-toolbar dentro del encabezado */
+    ion-toolbar {
+        height: 80px; /* Ajusta la altura del toolbar */
+        --background: #f5f5f5; /* Color de fondo del toolbar */
+        color: black; /* Color del texto dentro del toolbar */
+        position: relative; /* Permite posicionar elementos hijos, como el logo */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra en la parte inferior del header */
+
+        /* Estilos para el título dentro del toolbar */
+        ion-title {
+            font-size: 30px; /* Ajusta el tamaño del texto del título */
+            font-weight: bold; /* Hace el texto en negrita */
+            margin: 15px 15px; /* Margen alrededor del título */
+        }
+
+        /* Estilos para el logo que se posiciona en la esquina derecha */
+        .img-logo {
+            width: 60px; /* Ancho del logo */
+            height: 60px; /* Altura del logo */
+            position: absolute; /* Posiciona el logo en relación al toolbar */
+            right: 10px; /* Espaciado desde la derecha */
+            top: 50%; /* Posiciona el logo verticalmente centrado */
+            transform: translateY(-50%); /* Ajusta el logo para que esté centrado verticalmente */
+        }
+
+        /* Estilos para los botones dentro del toolbar */
+        ion-button {
+            font-size: 17px; /* Ajusta el tamaño del texto de los botones */
+        }
+
+        /* Estilos para un botón específico con la clase 'name' */
+        ion-button.name {
+            font-size: 1.5em; /* Aumenta el tamaño del texto para el botón 'name' */
+            font-weight: bold; /* Hace el texto en negrita */
+        }
+    }
+}
+
+ion-content {
+    --background: #f5f5f5; /* Color de fondo del contenido */
+}
+
+/* Estilos para el pie de página de la aplicación */
+ion-footer {
+    /* Estilos para el ion-toolbar dentro del pie de página */
+    ion-toolbar {
+        height: 80px; /* Ajusta la altura del toolbar */
+        --background: #f5f5f5; /* Color de fondo del toolbar */
+        color: black; /* Color del texto dentro del toolbar */
+        box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2); /* Sombra en la parte superior del footer */
+    }
+}

@@ -1,0 +1,171 @@
+.mobile-only ion-segment-button {
+    color: #000000; /* Color para el texto y los íconos */
+}
+
+ion-footer, ion-buttons.desktop-only {
+    display: none; /* Ocultar por defecto */
+}
+
+ion-icon {
+  font-size: 24px;
+  color:#bb0000;
+}
+
+.custom-modal {
+    position: fixed; /* Posicionamiento fijo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ancho del modal ocupa toda la pantalla */
+    height: 100%; /* Altura del modal ocupa toda la pantalla */
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro transparente */
+    z-index: 9999; /* Por encima del contenido */
+}
+
+.modal-content {
+    position: absolute; /* Posicionamiento absoluto dentro del modal */
+    bottom: 75px; /* 10px desde el fondo */
+    right: 20px; /* 10px desde la derecha */
+    width: 250px;
+    border-radius: 5px; /* Bordes redondeados para el contenido */
+    background: rgb(0, 0, 0); /* Fondo oscuro para el contenido */
+    padding: 5px; /* Espaciado interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra del contenido */
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.photo-reel {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: flex-start;  /* Para alinear las imágenes a la izquierda */
+  padding: 10px;
+}
+
+.photo {
+  flex: 0 0 40%; /* Ajuste automático de tamaño */
+  max-width: 40%;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;  /* Centra las imágenes dentro del contenedor */
+}
+
+.photo img {
+  width: 100%;
+  height: auto;  /* Mantén la relación de aspecto */
+  object-fit: contain;  /* Mantiene la imagen dentro del contenedor sin deformarse */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.photo-wrapper {
+  position: relative;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 10;
+}
+
+/* Contenedor del botón */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  align-items: center; /* Centra el botón verticalmente */
+  height: auto; /* Ocupa el 100% de la altura disponible */
+  margin-top: 30px; /* Espaciado desde la parte superior */
+}
+
+/* Estilo para el botón */
+.button-container ion-button {
+  width: 50%; /* El botón ocupa el 50% del ancho del contenedor */
+}
+
+/* Para dispositivos con un ancho mayor a 768px (desktop) */
+@media screen and (min-width: 769px) {
+    .content-wrapper {
+        display: flex;
+        justify-content: space-between; /* El contenido adicional se acomoda a la derecha */
+    }
+
+    .content-wrapper .calendar-container {
+        flex: 1;
+    }
+
+    .content-wrapper .additional-content {
+        flex: 1;
+        margin-left: 20px; /* Espacio entre el calendario y el contenido adicional */
+    }
+
+    ion-footer.mobile-only {
+        display: none; /* Ocultar el navbar inferior en desktop */
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    ion-buttons.desktop-only {
+        display: flex; /* Mostrar los botones del header en desktop */
+    }
+}
+
+/* Para dispositivos con un ancho menor a 768px (móviles) */
+@media screen and (max-width: 768px) {
+  /* Cambiar la dirección del reel a vertical en dispositivos móviles */
+  .photo-reel {
+    flex-direction: column; /* Hace que el reel sea vertical */
+    align-items: center; /* Centra las fotos */
+  }
+
+  /* Ajustar el tamaño de las fotos en dispositivos móviles */
+  .photo {
+    width: 80vw; /* 80% del ancho de la pantalla */
+    max-width: 90%; /* Máximo 90% del contenedor */
+    min-width: 200px; /* Evita que las fotos sean demasiado pequeñas */
+    margin-bottom: 15px; /* Espaciado entre las fotos */
+    
+    /* Establecer altura al 90% de la pantalla */
+    height: 90vh; /* 90% de la altura de la ventana de visualización */
+    max-height: 90vh; /* Evitar que la altura sea mayor al 90% */
+    min-height: 300px; /* Establecer altura mínima para que no se haga pequeña */
+    
+    display: flex; /* Usamos flex para que la imagen ocupe el 100% de la altura y mantenga la proporción */
+    justify-content: center; /* Centrar la imagen dentro del contenedor */
+    align-items: center; /* Centrar la imagen en el contenedor */
+  }
+
+  .photo img {
+    width: 100%;  /* La imagen ocupa el 100% del contenedor */
+    height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
+    object-fit: contain; /* Ajusta la imagen sin recortarla y manteniendo la proporción */
+    border-radius: 8px; /* Opcional: Redondear las esquinas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional para darle más estilo */
+  }
+
+    .additional-content {
+        margin-top: 20px; /* El contenido adicional se coloca debajo del calendario en móviles */
+    }
+
+    ion-footer.mobile-only {
+        display: block; /* Mostrar el navbar inferior en móviles */
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    ion-buttons.desktop-only {
+        display: none; /* Ocultar los botones del header en móviles */
+    }
+}

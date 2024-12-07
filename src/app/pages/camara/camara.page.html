@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Camara
+    </ion-title>
+    <img src="assets/images/ganzo.png" alt="Logo" class="img-logo mobile-only" />
+    <ion-buttons slot="end" class="desktop-only">
+      <ion-button (click)="goToHomePage()">
+        Inicio
+      </ion-button>
+      <ion-button (click)="goToHistPage()">
+        Registro
+      </ion-button>
+      <ion-button (click)="goToCamPage()">
+        Camara
+      </ion-button>
+      <ion-button *ngIf="isLoggedIn" class="name">
+        {{ userName }}
+      </ion-button>
+      <ion-button *ngIf="!isLoggedIn" (click)="login()" class="name">
+        Iniciar sesión
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="separator"></div> <!-- Línea separadora -->
+
+<ion-content [fullscreen]="true" class="content-center">
+  <!-- Contenedor para el botón -->
+  <div class="button-container">
+    <ion-button expand="block" (click)="openCameraModal()">Abrir Cámara</ion-button>
+  </div>
+
+  <!-- Reel de fotos tomadas -->
+  <div class="photo-reel">
+    <div *ngFor="let photo of photos" class="photo">
+      <div class="photo-wrapper">
+        <!-- Botón para eliminar la foto -->
+        <ion-button fill="clear" color="danger" (click)="deletePhoto(photo._id)" class="delete-button">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+        <!-- Imagen -->
+        <img [src]="photo.image" alt="Foto tomada" />
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<div class="separator"></div> <!-- Línea separadora -->
+
+<!-- Navbar inferior solo para móvil -->
+<ion-footer class="mobile-only">
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="tabService.selectedTab">
+      <ion-segment-button value="home" (click)="goToHomePage()">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="hist" (click)="goToHistPage()">
+        <ion-icon name="time-outline"></ion-icon>
+        <ion-label>Registro</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="cam" (click)="goToCamPage()">
+        <ion-icon name="camera-outline"></ion-icon>
+        <ion-label>Camara</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="profile" (click)="toggleProfileMenu()">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <!-- Modal que actúa como menú lateral desde la esquina inferior derecha -->
+  <div class="custom-modal" *ngIf="isProfileMenuOpen" (click)="closeProfileMenu()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <ion-list>
+        <ion-item>
+          <ion-label>{{ userName }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Configuración</ion-label>
+        </ion-item>
+        <ion-item (click)="logout()">
+          <ion-label>Cerrar sesión</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-footer>

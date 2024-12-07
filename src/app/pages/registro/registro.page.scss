@@ -1,0 +1,167 @@
+.password-toggle-icon {
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #b9b9b9;
+    align-self: center; /* Alinea el ícono verticalmente */
+  }
+
+/* Media query para pantallas grandes (escritorio) */
+@media only screen and (min-width: 1024px) {
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente */
+        justify-content: center; /* Centra verticalmente */
+        height: 100%; /* Ocupa el 100% del alto */
+    }
+
+    .logo-container {
+        display: flex; /* Habilita flexbox */
+        justify-content: center; /* Centra el logo horizontalmente */
+        width: 100%; /* El contenedor ocupa el ancho completo */
+        margin-bottom: 10px; /* Espacio entre la imagen y el formulario */
+    }
+
+    .logo-container img {
+        max-width: 300px; /* Imagen más grande en pantallas grandes */
+        width: 50%;
+        height: auto; /* Mantiene la proporción */
+    }
+
+    .form-container {
+        width: 100%; /* El formulario ocupa el 100% del ancho */
+        max-width: 600px; /* Más ancho en pantallas grandes */
+        height: auto; /* Ajusta la altura automáticamente */
+        padding: 10px; /* Mayor espaciado interno */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+        border: 1px solid rgba(0, 0, 0, 0.2); /* Borde delgado */
+        border-radius: 10px; /* Bordes redondeados */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: box-shadow 0.3s ease;
+        margin-bottom: 40px;
+    }
+
+    .form-container:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Efecto hover */
+    }
+
+    .login-container {
+        margin-top: 10px;
+        text-align: center;
+        color: #666;
+        width: 100%;
+        max-width: 600px; /* Más ancho en pantallas grandes */
+        height: auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+    }
+}
+
+/* Media query para pantallas pequeñas (celulares) */
+@media only screen and (max-width: 768px) {
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .logo-container img {
+        max-width: 200px; /* Imagen más pequeña en pantallas móviles */
+        width: 80%;
+        height: auto;
+    }
+
+    .form-container {
+        width: 90%; /* Ocupa el 100% del ancho */
+        max-width: 500px; /* Evita que ocupe toda la pantalla */
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin-bottom: 60px;
+    }
+
+    .login-container {
+        margin-top: 10px;
+        text-align: center;
+        color: #666;
+        width: 90%;
+        max-width: 500px; /* Ocupa casi todo el ancho */
+        height: auto;
+        padding: 8px; /* Ajusta el espaciado */
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+    .register-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .logo-container img {
+        max-width: 350px; /* Imagen más pequeña en pantallas móviles */
+        width: 80%;
+        height: auto;
+    }
+
+    .form-container {
+        width: 100%; /* Ocupa el 100% del ancho */
+        max-width: 650px; /* Más ancho en pantallas grandes */
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin-bottom: 60px;
+    }
+
+    .login-container {
+        margin-top: 10px;
+        text-align: center;
+        color: #666;
+        width: 100%;
+        max-width: 650px;
+        height: auto;
+        padding: 8px; /* Ajusta el espaciado */
+    }
+}
+
+/* Estilos específicos aplicados a todos los tamaños de pantalla */
+ion-item {
+    --background: #fff; /* Fondo blanco */
+    --border-color: #000; /* Borde negro */
+    --border-width: 1px; /* Grosor del borde */
+    --color: #000; /* Color del texto */
+    --border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+ion-button {
+    --background: #4CAF50;
+    --border-radius: 10px; /* Esquinas redondeadas */
+    width: 40%; /* Ancho del botón */
+    min-width: 130px;
+    margin: 20px auto; /* Centra el botón y agrega margen superior/inferior */
+    display: block; /* Asegura que el botón se comporte como un bloque para centrarse correctamente */
+}

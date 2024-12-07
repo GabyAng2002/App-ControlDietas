@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Inicio
+    </ion-title>
+    <img src="assets/images/ganzo.png" alt="Logo" class="img-logo mobile-only"/>
+    <ion-buttons slot="end" class="desktop-only">
+      <ion-button (click)="goToHomePage()">
+        Inicio
+      </ion-button>
+      <ion-button (click)="goToHistPage()">
+        Registro
+      </ion-button>
+      <ion-button (click)="goToCamPage()">
+        Camara
+      </ion-button>
+      <ion-button *ngIf="isLoggedIn" class="name">
+        {{ userName }}
+      </ion-button>
+      <ion-button *ngIf="!isLoggedIn" (click)="login()" class="name">
+        Iniciar sesión
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="separator"></div> <!-- Línea separadora -->
+
+<ion-content class="ion-padding">
+  <!-- Contenedor para centrar el contenido -->
+  <div class="content-container">
+    <!-- Formulario para ingresar calorías -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Registro de calorías</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Calorías (kcal)</ion-label>
+          <ion-input type="number" [(ngModel)]="calorias"></ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="agregarCalorias()">Agregar</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Lista de comidas registradas -->
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Comidas registradas</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let comida of comidas">
+        {{ comida }} kcal
+      </ion-item>
+    </ion-list>
+
+    <!-- Total de calorías -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Total de Calorías</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ totalCalorias }} kcal
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" color="danger" (click)="terminarDia()">Terminar día</ion-button>
+  </div>
+</ion-content>
+
+<div class="separator"></div> <!-- Línea separadora -->
+
+<!-- Navbar inferior solo para móvil -->
+<ion-footer class="mobile-only">
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="tabService.selectedTab">
+      <ion-segment-button value="home" (click)="goToHomePage()">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="hist" (click)="goToHistPage()">
+        <ion-icon name="time-outline"></ion-icon>
+        <ion-label>Registro</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="cam" (click)="goToCamPage()">
+        <ion-icon name="camera-outline"></ion-icon>
+        <ion-label>Camara</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="profile" (click)="toggleProfileMenu()">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <!-- Modal que actúa como menú lateral desde la esquina inferior derecha -->
+<div class="custom-modal" *ngIf="isProfileMenuOpen" (click)="closeProfileMenu()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ userName }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Configuración</ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</div>
+</ion-footer>

@@ -1,0 +1,30 @@
+<!-- camera-modal.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cámara</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" class="close">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="camara">
+    <ion-button expand="full" (click)="takePhoto()">Tomar Foto</ion-button>
+
+    <!-- Mostrar el video solo si la cámara está activa -->
+    <div *ngIf="isDesktop && videoStreamActive">
+      <video #video autoplay></video>
+    </div>
+
+    <!-- Indicador de carga si no hay permisos o aún no se ha activado el stream -->
+    <div *ngIf="cameraPermissionDenied && !videoStreamActive && !imageUrl" class="loading">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Conectando a la cámara...</p>
+    </div>
+
+    <div *ngIf="imageUrl" class="image-preview">
+      <img [src]="imageUrl" alt="Foto tomada" />
+    </div>
+  </div>
+</ion-content>
