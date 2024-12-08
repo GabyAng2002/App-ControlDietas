@@ -2,41 +2,46 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, NavigationEnd } from '@angular/router'; // Importa Router para redireccionar
 import { Subscription } from 'rxjs';
-import { ModalController } from '@ionic/angular';
+import {ModalController} from "@ionic/angular";
 import { NavController } from '@ionic/angular';
 
+import { Geolocation } from '@capacitor/geolocation';
+import { Motion } from '@capacitor/motion';
+import {PluginListenerHandle} from "@capacitor/core";
+
 import { TabService } from '../../services/tab.service';
-import { CaloriasService } from 'src/app/services/calorias.service';
-//Ejemplo de comentario para Github en la rama Main
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-ubicacion',
+  templateUrl: './ubicacion.page.html',
+  styleUrls: ['./ubicacion.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
-
+export class UbicacionPage implements OnInit {
   isProfileMenuOpen: boolean = false; // Controlar si el menú está abierto o cerrado
   isLoggedIn: boolean = false;
   userName: string; // Variable para almacenar el nombre del usuario
   userId: number;
   private routerSubscription!: Subscription; // Suscripción a eventos de navegación
-  calorias: number | null = null;
-  comidas: number[] = [];
-  totalCalorias = 0;
+
+  acceleration: { x: number; y: number; z: number } | null = null;
+
+  watchId: PluginListenerHandle | undefined;
+  location: { latitude: number; longitude: number } | null = null;
+
+  private map: any;
+  private marker: any;
 
   constructor(
     private authService: AuthService, // Servicio de autenticación
     private router: Router, // Router para redireccionar
     public tabService: TabService,
-    private navCtrl: NavController,
-    private caloriasService: CaloriasService
+    private navCtrl: NavController
   ) {
     // Inicializar el nombre del usuario y el estado de autenticación
     this.userName = this.authService.getUserName(); // Método para obtener el nombre del usuario
     this.isLoggedIn = !!this.userName; // Comprobar si el usuario está autenticado
     this.userId = this.authService.getUserId(); //Obtener el ID del usuario para peticiones en los servicios
-  }
+   }
 
   ngOnInit() {
     this.loadUserData(); //Cargar datos del usuario
@@ -60,6 +65,35 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
+  async getLocation() {
+    const coordinates = await Geolocation.getCurrentPosition();
+    this.location = {
+      latitude: coordinates.coords.latitude,
+      longitude: coordinates.coords.longitude,
+    };
+  
+  }
+  
+  async startWatching() {
+    this.watchId = await Motion.addListener('accel', (event: any) => {
+      this.acceleration = {
+        x: event.acceleration?.x || 0,
+        y: event.acceleration?.y || 0,
+        z: event.acceleration?.z || 0,
+      };
+    });
+  }
+
+  stopWatching() {
+    if (this.watchId) {
+      Motion.removeAllListeners();
+      if (this.watchId !== null){
+        this.watchId = undefined;
+      }
+
+    }
+  }
+
   ngOnDestroy() {
     // Cancelar la suscripción para evitar fugas de memoria
     if (this.routerSubscription) {
@@ -67,22 +101,6 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
-  // Función para agregar calorías a la lista y actualizar el total
-  agregarCalorias() {
-    if (this.calorias && this.calorias > 0) {
-      this.comidas.push(this.calorias); // Añadir la comida a la lista
-      this.totalCalorias += this.calorias; // Sumar al total de calorías
-      this.calorias = null; // Limpiar el campo de entrada
-    }
-  }
-
-  // Función para terminar el día y guardar las calorías
-  terminarDia() {
-    this.caloriasService.agregarCaloriasAlHistorial(this.totalCalorias);
-    this.totalCalorias = 0; // Reiniciar el total de calorías
-    this.comidas = []; // Limpiar las comidas registradas
-  }
-  
   // Método para cerrar sesión
   logout() {
     this.authService.logout(); // Lógica para cerrar sesión
@@ -118,7 +136,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.tabService.selectedTab = 'ubi';
     this.router.navigate(['/ubicacion']);
   }
-  
+
   // Alternar el estado de apertura/cierre del menú de perfil
   toggleProfileMenu() {
     this.tabService.selectedTab = 'profile';

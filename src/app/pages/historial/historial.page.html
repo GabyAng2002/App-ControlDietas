@@ -28,7 +28,7 @@
 
 <!--GRAFICAS-->
 <ion-content class="ion-padding">
-  <canvas id="caloriasChart" height="200"></canvas>
+  <canvas id="caloriasChart" height="300"></canvas>
 
   <ion-list>
     <ion-item *ngFor="let registro of historialCalorias">
@@ -75,8 +75,8 @@
       <ion-item>
         <ion-label>{{ userName }}</ion-label>
       </ion-item>
-      <ion-item>
-        <ion-label>Configuración</ion-label>
+      <ion-item (click)="goToUbiPage()">
+        <ion-label>Ubicación</ion-label>
       </ion-item>
       <ion-item (click)="logout()">
         <ion-label>Cerrar sesión</ion-label>

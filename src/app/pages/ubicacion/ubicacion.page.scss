@@ -11,60 +11,67 @@ ion-icon {
   color:#bb0000;
 }
 
-ion-item {
-    --border-color: #ccc;
-    --border-width: 1px;
-    --padding-start: 8px;
+/* General content styling */
+ion-content {
+    --background: #f5f5f5; /* Fondo claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100%;
   }
   
-  ion-label h2 {
-    font-size: 18px;
-    font-weight: bold;
+  /* Card styling */
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%; /* Responsivo */
+    text-align: center;
   }
   
-  .fecha {
-    font-size: 14px;
-    color: gray;
+  /* Headings inside the card */
+  .card h2 {
+    color: #333;
+    margin-bottom: 10px;
   }
   
-  ion-avatar {
-    --size: 40px;
-    margin-right: 10px;
+  /* Paragraph styling */
+  .card p {
+    color: #666;
+    font-size: 16px;
+    margin: 5px 0;
   }
   
-  ion-avatar ion-icon {
-    font-size: 24px;
+  /* Button styling */
+  ion-button {
+    --background: #3880ff; /* Color azul por defecto */
+    --color: white;
+    width: 100%; /* Botones ocupan todo el ancho */
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
   
-  ion-list {
-    margin-top: 10px;
+  /* Button hover effects */
+  ion-button:hover {
+    --background: #3171e0; /* Azul más oscuro */
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
   
-.custom-modal {
-    position: fixed; /* Posicionamiento fijo */
-    top: 0;
-    left: 0;
-    width: 100%; /* Ancho del modal ocupa toda la pantalla */
-    height: 100%; /* Altura del modal ocupa toda la pantalla */
-    background: rgba(0, 0, 0, 0.5); /* Fondo negro transparente */
-    z-index: 9999; /* Por encima del contenido */
+full-calendar {
+    max-width: 800px;
+    background-color: #FFFFFF; /* Fondo gris oscuro */
+    border: 2px solid black; /* Borde negro de 2px */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espacio interior */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%; /* Aseguramos que el calendario use todo el espacio disponible */
 }
-
-.modal-content {
-    position: absolute; /* Posicionamiento absoluto dentro del modal */
-    bottom: 75px; /* 10px desde el fondo */
-    right: 20px; /* 10px desde la derecha */
-    width: 250px;
-    border-radius: 5px; /* Bordes redondeados para el contenido */
-    background: rgb(0, 0, 0); /* Fondo oscuro para el contenido */
-    padding: 5px; /* Espaciado interno */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra del contenido */
-}
-
-canvas {
-  margin-right: 10px;
-}
-
 
 /* Para dispositivos con un ancho mayor a 768px (desktop) */
 @media screen and (min-width: 769px) {

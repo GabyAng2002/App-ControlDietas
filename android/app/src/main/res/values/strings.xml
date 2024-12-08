@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">ControlCocina</string>
-    <string name="title_activity_main">ControlCocina</string>
+    <string name="app_name">ControlDieta</string>
+    <string name="title_activity_main">ControlDieta</string>
     <string name="package_name">com.gaby.controlDieta</string>
     <string name="custom_url_scheme">com.gaby.controlDieta</string>
 </resources>

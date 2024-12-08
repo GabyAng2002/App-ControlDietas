@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Camara
+      Ubicación
     </ion-title>
     <img src="assets/images/ganzo.png" alt="Logo" class="img-logo mobile-only" />
     <ion-buttons slot="end" class="desktop-only">
@@ -26,25 +26,28 @@
 
 <div class="separator"></div> <!-- Línea separadora -->
 
-<ion-content [fullscreen]="true" class="content-center">
-  <!-- Contenedor para el botón -->
-  <div class="button-container">
-    <ion-button expand="block" (click)="openCameraModal()">Abrir Cámara</ion-button>
+<ion-content>
+
+  <div class="card">
+    <div *ngIf="location">
+      <h2>Location</h2>
+      <p>Latitude: {{ location.latitude }}</p>
+      <p>Longitude: {{ location.longitude }}</p>
+    </div>
+
+    <div *ngIf="acceleration">
+      <h2>Acceleration</h2>
+      <p>X: {{ acceleration.x }}</p>
+      <p>Y: {{ acceleration.y }}</p>
+      <p>Z: {{ acceleration.z }}</p>
+    </div>
+
+    <!-- Botones ajustados para que ocupen el 100% del ancho -->
+    <ion-button (click)="getLocation()">Get Location</ion-button>
+    <ion-button (click)="startWatching()">Start Accelerometer</ion-button>
+    <ion-button (click)="stopWatching()">Stop Accelerometer</ion-button>
   </div>
 
-  <!-- Reel de fotos tomadas -->
-  <div class="photo-reel">
-    <div *ngFor="let photo of photos" class="photo">
-      <div class="photo-wrapper">
-        <!-- Botón para eliminar la foto -->
-        <ion-button fill="clear" color="danger" (click)="deletePhoto(photo._id)" class="delete-button">
-          <ion-icon name="trash-outline"></ion-icon>
-        </ion-button>
-        <!-- Imagen -->
-        <img [src]="photo.image" alt="Foto tomada" />
-      </div>
-    </div>
-  </div>
 </ion-content>
 
 <div class="separator"></div> <!-- Línea separadora -->

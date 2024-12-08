@@ -72,6 +72,8 @@ export class HistorialPage implements OnInit {
     // Obtener el contexto del canvas
     const ctx = document.getElementById('caloriasChart') as HTMLCanvasElement;
 
+    const fontSize = window.innerWidth < 480 ? 8 : 12;
+
     // Crear gráfico con Chart.js
     new Chart(ctx, {
       type: 'line', // Puedes cambiar el tipo de gráfico a 'bar', 'line', etc.
@@ -88,7 +90,21 @@ export class HistorialPage implements OnInit {
       options: {
         responsive: true,
         scales: {
+          x: {
+            ticks: {
+              font: {
+                size: fontSize, // Usar el tamaño de fuente adaptativo
+              },
+              maxRotation: 45,
+              minRotation: 0,
+            },
+          },
           y: {
+            ticks: {
+              font: {
+                size: fontSize, // Tamaño de fuente para las etiquetas del eje Y
+              },
+            },
             beginAtZero: true, // Iniciar el eje Y en cero
           },
         },
@@ -136,6 +152,12 @@ export class HistorialPage implements OnInit {
     this.tabService.selectedTab = 'cam';
     this.router.navigate(['/camara']);
   }
+
+  goToUbiPage() {
+    this.tabService.selectedTab = 'ubi';
+    this.router.navigate(['/ubicacion']);
+  }
+  
   // Alternar el estado de apertura/cierre del menú de perfil
   toggleProfileMenu() {
     this.tabService.selectedTab = 'profile';

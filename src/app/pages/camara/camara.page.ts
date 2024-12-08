@@ -147,6 +147,11 @@ export class CamaraPage implements OnInit, OnDestroy {
     this.router.navigate(['/camara']);
   }
 
+  goToUbiPage() {
+    this.tabService.selectedTab = 'ubi';
+    this.router.navigate(['/ubicacion']);
+  }
+
   // Alternar el estado de apertura/cierre del menú de perfil
   toggleProfileMenu() {
     this.tabService.selectedTab = 'profile';
