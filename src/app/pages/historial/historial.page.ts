@@ -136,6 +136,12 @@ export class HistorialPage implements OnInit {
     this.tabService.selectedTab = 'cam';
     this.router.navigate(['/camara']);
   }
+  
+  goToUbiPage() {
+    this.tabService.selectedTab = 'ubi';
+    this.router.navigate(['/ubicacion']);
+  }
+
   // Alternar el estado de apertura/cierre del menú de perfil
   toggleProfileMenu() {
     this.tabService.selectedTab = 'profile';

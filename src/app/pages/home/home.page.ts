@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, NavigationEnd } from '@angular/router'; // Importa Router para redireccionar
 import { Subscription } from 'rxjs';
-import { ModalController } from '@ionic/angular';
+import {ModalController} from "@ionic/angular";
 import { NavController } from '@ionic/angular';
 
 import { TabService } from '../../services/tab.service';
@@ -30,7 +30,8 @@ export class HomePage implements OnInit, OnDestroy {
     private router: Router, // Router para redireccionar
     public tabService: TabService,
     private navCtrl: NavController,
-    private caloriasService: CaloriasService
+    private caloriasService: CaloriasService,
+    private modalController: ModalController
   ) {
     // Inicializar el nombre del usuario y el estado de autenticación
     this.userName = this.authService.getUserName(); // Método para obtener el nombre del usuario
@@ -82,7 +83,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.totalCalorias = 0; // Reiniciar el total de calorías
     this.comidas = []; // Limpiar las comidas registradas
   }
-  
+
   // Método para cerrar sesión
   logout() {
     this.authService.logout(); // Lógica para cerrar sesión
@@ -113,6 +114,12 @@ export class HomePage implements OnInit, OnDestroy {
     this.tabService.selectedTab = 'cam';
     this.router.navigate(['/camara']);
   }
+
+  goToUbiPage() {
+    this.tabService.selectedTab = 'ubi';
+    this.router.navigate(['/ubicacion']);
+  }
+
   // Alternar el estado de apertura/cierre del menú de perfil
   toggleProfileMenu() {
     this.tabService.selectedTab = 'profile';
